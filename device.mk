@@ -114,6 +114,11 @@ PRODUCT_PACKAGES += \
 # Charger
 include $(LOCAL_PATH)/rootdir/charger/charger.mk
 
+# Device mapper verity
+PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
+PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/cust
+$(call inherit-product, build/target/product/verity.mk)
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8937 \
