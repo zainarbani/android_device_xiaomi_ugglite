@@ -43,6 +43,9 @@ PRODUCT_AAPT_PREBUILT_DPI := hdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
+# RRO
+PRODUCT_ENFORCE_RRO_TARGETS := *
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
