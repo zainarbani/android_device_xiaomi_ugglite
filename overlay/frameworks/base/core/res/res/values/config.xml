@@ -122,6 +122,11 @@
          This needs to match the constants in services/core/java/com/android/server/policy/policy/impl/PhoneWindowManager.java -->
     <integer name="config_longPressOnAppSwitchBehavior">1</integer>
 
+    <!-- Enables or disables haptic effect when the text insertion/selection handle is moved
+         manually by the user. Off by default, since the expected haptic feedback may not be
+         available on some devices. -->
+    <bool name="config_enableHapticTextHandle">true</bool>
+
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
     <integer name="config_screenBrightnessSettingMinimum">1</integer>
