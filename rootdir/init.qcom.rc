@@ -40,6 +40,9 @@ on early-init
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
+    chmod 0666 /dev/input/event2
+    chown system system /dev/input/event2
+
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
@@ -116,10 +119,6 @@ on boot
     # Allow access to dload sysfs node
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
-
-    # DT2W
-    chmod 0660 /proc/gesture/onoff
-    chown system system /proc/gesture/onoff
 
     # IR blaster
     chown root system /sys/class/leds/infrared/transmit
