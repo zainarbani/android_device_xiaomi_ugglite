@@ -18,27 +18,27 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n.mk)
 
 # Inherit some common Lineage stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit from riva device
-$(call inherit-product, $(LOCAL_PATH)/device.mk)
+# Inherit from ugglite device
+$(call inherit-product, device/xiaomi/ugglite/device.mk)
 
-PRODUCT_BRAND := Xiaomi
-PRODUCT_DEVICE := riva
+PRODUCT_NAME := lineage_ugglite
+PRODUCT_DEVICE := ugglite
+PRODUCT_MODEL := Redmi Note 5A
+PRODUCT_BRAND := xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_MODEL := Redmi 5A
-PRODUCT_NAME := lineage_riva
+TARGET_VENDOR_PRODUCT_NAME := ugglite
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-TARGET_VENDOR_PRODUCT_NAME := riva
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE="riva" \
-    PRODUCT_NAME="riva" \
-    PRIVATE_BUILD_DESC="riva-user 7.1.2 N2G47H V9.5.6.0.NCKMIFA release-keys"
+    TARGET_DEVICE="ugglite" \
+    PRODUCT_NAME="ugglite" \
+    PRIVATE_BUILD_DESC="ugglite-user 7.1.2 N2G47H V9.1.2.0.NDFMIEI release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/riva/riva:7.1.2/N2G47H/V9.5.6.0.NCKMIFA:user/release-keys
+# Set BUILD_FINGERPRINT variable
+BUILD_FINGERPRINT := "Xiaomi/ugglite/ugglite:7.1.2/N2G47H/V9.1.2.0.NDFMIEI:user/release-keys"

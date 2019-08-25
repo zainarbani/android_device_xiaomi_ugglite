@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/riva
+DEVICE_PATH := device/xiaomi/ugglite
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8937
@@ -78,9 +78,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_TS_MAKEUP := true
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
-TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /vendor/bin/mm-qcamera-daemon=23
-
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -118,16 +115,16 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := ignore_loglevel androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := riva_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8917
+TARGET_KERNEL_CONFIG := ugglite_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8937
 TARGET_COMPILE_WITH_MSM_KERNEL	:= true
 
 # Lights
@@ -208,4 +205,5 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the common proprietary files
--include vendor/xiaomi/riva/BoardConfigVendor.mk
+-include vendor/xiaomi/ugglite/BoardConfigVendor.mk
+-include vendor/xiaomi/msm8937-common/BoardConfigVendor.mk

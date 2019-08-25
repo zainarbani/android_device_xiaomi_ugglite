@@ -1,13 +1,12 @@
 #!/bin/bash
 #
-# Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,10 +17,12 @@
 
 set -e
 
-DEVICE=riva
-VENDOR=xiaomi
+INITIAL_COPYRIGHT_YEAR=2019
 
-INITIAL_COPYRIGHT_YEAR=2017
+# Required!
+export DEVICE=ugglite
+export DEVICE_COMMON=msm8937-common
+export VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -37,14 +38,27 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and guards
-write_headers
+write_headers "ugglite"
 
-write_makefiles "$MY_DIR"/proprietary-files.txt true
-write_makefiles "$MY_DIR"/proprietary-files-qc.txt true
+# The standard common blobs
+write_makefiles "$MY_DIR"/proprietary-files-qcom.txt true
 
-# Finish
+# We are done!
 write_footers
 
+if [ -s "$MY_DIR"/proprietary-files.txt ]; then
+    # Reinitialize the helper for device
+    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false
+
+    # Copyright headers and guards
+    write_headers
+
+    # The standard device blobs
+    write_makefiles "$MY_DIR"/proprietary-files.txt true
+
+    # We are done!
+    write_footers
+fi
