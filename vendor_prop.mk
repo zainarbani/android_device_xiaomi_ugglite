@@ -61,7 +61,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.gyro.android=1 \
     persist.vendor.camera.HAL3.enabled=1 \
     persist.vendor.camera.is_type=1 \
-    vendor.camera.hal1.packagelist=com.whatsapp,com.intsig.camscanner,com.instagram.android,com.snapchat.android \
+    vendor.camera.hal1.packagelist=com.intsig.camscanner,com.instagram.android,com.snapchat.android \
     vidc.enc.dcvs.extra-buff-count=2
 
 # CNE
@@ -182,3 +182,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+    
+# Enforce privapp-permissions whitelist
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.control_privapp_permissions=enforce
